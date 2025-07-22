@@ -97,7 +97,7 @@ public class TaskController {
         return ResponseEntity.
                 status(HttpStatus.OK).
                 header("Successfully update.").
-                body(taskService.updateTask(id, taskRequest));
+                body(taskService.updateTask(id, taskRequest)); // Status: 200
     }
 
     /**
@@ -113,6 +113,6 @@ public class TaskController {
             @PositiveOrZero(message = "Id is invalid")
             @PathVariable Long id) {
         taskService.deleteTask(id);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.noContent().build(); // Status: 204
     }
 }
