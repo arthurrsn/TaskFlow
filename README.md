@@ -4,38 +4,38 @@
 
 ---
 
-## 📝 Descrição do Projeto
+## 📝 Project Description
 
-Este projeto é uma API RESTful desenvolvida com Spring Boot para gerenciamento de tarefas. Seu objetivo é criar uma solução robusta e escalável que permita aos usuários organizar e controlar suas atividades, aplicando as melhores práticas de desenvolvimento Back-end.
+This project is a RESTful API developed with Spring Boot for task management. Its goal is to create a robust and scalable solution that allows users to organize and control their activities, applying the best practices of Back-end development.
 
-## 🚀 Tecnologias Utilizadas
+## 🚀 Technologies Used
 
 * **Java 21+**
-* **Spring Boot 3.5.3** 
-    * Spring Web (para APIs REST)
-    * Spring Data JPA (para acesso e persistência em banco de dados)
-    * Lombok (para reduzir boilerplate code)
-    * Spring Boot DevTools (para agilizar o desenvolvimento)
-* **Maven** (Gerenciador de Dependências)
-* **MySQL** (Banco de Dados Relacional)
+* **Spring Boot 3.5.3**
+    * Spring Web (for REST APIs)
+    * Spring Data JPA (for database access and persistence)
+    * Lombok (for reducing boilerplate code)
+    * Spring Boot DevTools (for accelerating development)
+* **Maven** (Dependency Manager)
+* **MySQL** (Relational Database)
 
-## ▶️ Como Rodar o Projeto
+## ▶️ How to Run the Project
 
-1.  **Pré-requisitos:**
+1.  **Prerequisites:**
     * Java Development Kit (JDK) 21+
     * Apache Maven
     * MySQL Server
-    * MySQL Workbench (ou outro cliente MySQL)
-2.  **Configuração do Banco de Dados:**
-    * Crie um schema no MySQL (ex: `taskflow`).
-    * Atualize as credenciais de conexão em `src/main/resources/application.properties` (URL, usuário, senha, driver, dialeto).
-3.  **Executar:**
-    * Via IDE: Importe como projeto Maven e execute a classe principal `TaskflowApplication.java`.
+    * MySQL Workbench (or another MySQL client)
+2.  **Database Configuration:**
+    * Create a schema in MySQL (e.g., `taskflow_db`).
+    * Update the connection credentials in `src/main/resources/application.properties` (URL, username, password, driver, dialect).
+3.  **Execute:**
+    * Via IDE: Import as a Maven project and run the main class `TaskflowApplication.java`.
     * Via Terminal: `mvn spring-boot:run`
-4.  **Acesso à API:**
-    * A API estará disponível em `http://localhost:8080`.
+4.  **API Access:**
+    * The API will be available at `http://localhost:8080`.
 
-## 📧 Contato
+## 📧 Contact
 
 * **LinkedIn:** [Arthur Ribeiro](www.linkedin.com/in/arthurrsdn)
 * **Email:** [arthur.ribeiro.sn@gmail.com](mailto:arthur.ribeiro.sn@gmail.com)
