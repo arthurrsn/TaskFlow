@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
  * <p>Contains the essential attributes of a task and is managed by JPA for persistence.</p>
  *
  * @author Arthur Ribeiro
- * @version 0.3.0
+ * @version 0.7.0
  * @since 2025-07-21
  */
 @Entity

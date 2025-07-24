@@ -28,7 +28,7 @@ import java.util.List;
  * to {@link br.projeto.taskflow.service.TaskService}.</p>
  *
  * @author Arthur Ribeiro
- * @version 0.3.0
+ * @version 0.7.0
  * @since 2025-07-21
  */
 @RestController
@@ -40,6 +40,20 @@ public class TaskController {
     @Autowired
     public TaskController(TaskService taskService) {
         this.taskService = taskService;
+    }
+
+    /**
+     * <h1>listAllTasks</h1>
+     * <strong>Lists All Tasks</strong>
+     * <p>Retrieves all tasks available in the system.</p>
+     * <p>Delegates the retrieval logic to the service layer.</p>
+     * @return A {@link ResponseEntity} with status 200 OK and a list of {@link br.projeto.taskflow.dto.TaskResponse} containing all tasks.
+     */
+    @GetMapping
+    public ResponseEntity<List<TaskResponse>> listAllTasks(){
+        return ResponseEntity.
+                status(HttpStatus.OK).
+                body(taskService.listAllTasks());
     }
 
     /**

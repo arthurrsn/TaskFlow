@@ -19,7 +19,7 @@ import java.util.List;
  * Custom query methods are defined here, which Spring Data JPA implements automatically.
  * </p>
  * @author Arthur Ribeiro
- * @version 0.3.0
+ * @version 0.7.0
  * @since 2025-07-22
  */
 @Repository
