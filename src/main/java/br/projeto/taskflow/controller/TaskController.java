@@ -28,7 +28,7 @@ import java.util.List;
  * to {@link br.projeto.taskflow.service.TaskService}.</p>
  *
  * @author Arthur Ribeiro
- * @version 0.2.0
+ * @version 0.3.0
  * @since 2025-07-21
  */
 @RestController
