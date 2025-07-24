@@ -3,7 +3,13 @@ package br.projeto.taskflow.controller;
 import br.projeto.taskflow.dto.TaskRequest;
 import br.projeto.taskflow.dto.TaskResponse;
 import br.projeto.taskflow.service.TaskService;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.PositiveOrZero;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,7 +28,7 @@ import java.util.List;
  * to {@link br.projeto.taskflow.service.TaskService}.</p>
  *
  * @author Arthur Ribeiro
- * @version 0.1.0
+ * @version 0.3.0
  * @since 2025-07-21
  */
 @RestController
@@ -42,11 +48,15 @@ public class TaskController {
      * <p>Receives new task data via a request DTO and delegates the creation to the service.</p>
      *
      * @param taskRequest DTO containing the data for the task to be created.
-     * @return An instance of {@link br.projeto.taskflow.dto.TaskResponse} representing the created task.
+     * @return An ResponseEntity with Status 201 and return of {@link br.projeto.taskflow.service.TaskService}
+     * representing the created task.
      */
     @PostMapping
-    public TaskResponse createTask(@RequestBody TaskRequest taskRequest){
-        return taskService.createTask(taskRequest);
+    public ResponseEntity<TaskResponse> createTask(@Valid @RequestBody TaskRequest taskRequest){
+        return ResponseEntity.
+                status(HttpStatus.CREATED).
+                header("Successfully creation").
+                body(taskService.createTask(taskRequest)); // Status: 201
     }
 
     /**
@@ -57,11 +67,17 @@ public class TaskController {
      * <p>TODO: Add search functionality with filters using {@code @RequestParam}.</p>
      *
      * @param search The term used for the search.
-     * @return A list of {@link br.projeto.taskflow.dto.TaskResponse} containing the found tasks.
+     * @return A Response Entity with Status 200 and a list of {@link br.projeto.taskflow.dto.TaskResponse}
+     * containing the found tasks.
      */
     @GetMapping("/{search}")
-    public List<TaskResponse> searchTask(@PathVariable String search){
-        return taskService.searchTask(search);
+    public ResponseEntity<List<TaskResponse>> searchTask(
+            @NotBlank(message = "Search is invalid")
+            @PathVariable String search){
+        return ResponseEntity.
+                status(HttpStatus.OK).
+                header("Successfully search.").
+                body(taskService.searchTask(search)); // Status: 200
     }
 
     /**
@@ -71,13 +87,17 @@ public class TaskController {
      *
      * @param id The unique identifier of the task to be updated.
      * @param taskRequest DTO containing the complete task data for the update.
-     * @return An instance of {@link br.projeto.taskflow.dto.TaskResponse} with the updated task data.
+     * @return A Response Entity with Status 200 and an instance
+     * of {@link br.projeto.taskflow.dto.TaskResponse} with the updated task data.
      */
     @PutMapping("/{id}")
-    public TaskResponse updateTask(
-            @PathVariable Long id,
-            @RequestBody TaskRequest taskRequest){
-        return taskService.updateTask(id, taskRequest);
+    public ResponseEntity<TaskResponse> updateTask(
+            @PositiveOrZero(message = "Id is invalid") @PathVariable Long id,
+            @Valid @RequestBody TaskRequest taskRequest){
+        return ResponseEntity.
+                status(HttpStatus.OK).
+                header("Successfully update.").
+                body(taskService.updateTask(id, taskRequest)); // Status: 200
     }
 
     /**
@@ -86,8 +106,13 @@ public class TaskController {
      * <p>Receives the task identifier and delegates the deletion to the service.</p>
      *
      * @param id The unique identifier of the task to be deleted.
+     * @return A Status 204 indicating that Delete were successfully.
      */
-    public void deleteTask(@PathVariable Long id) {
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteTask(
+            @PositiveOrZero(message = "Id is invalid")
+            @PathVariable Long id) {
         taskService.deleteTask(id);
+        return ResponseEntity.noContent().build(); // Status: 204
     }
 }
