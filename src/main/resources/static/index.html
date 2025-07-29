@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Flow</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<main>
+    <div class="card">
+        <h2>🔎 Search Tasks</h2>
+        <form id="searchForm">
+            <input type="search" id="searchInput" placeholder="Search and press Enter..." required>
+        </form>
+    </div>
+
+    <hr>
+
+    <h2 id="taskListTitle">Task List</h2>
+    <div id="taskList"></div>
+</main>
+
+<div id="addTaskModal" class="modal">
+    <div class="modal-content card">
+        <h1>Add New Task</h1>
+        <form id="taskForm">
+            <div><label for="title">Title:</label><input type="text" id="title" name="title" required></div><br>
+            <div><label for="description">Description:</label><textarea id="description" name="description" rows="4" required></textarea></div><br>
+            <div><label for="status">Status:</label><select id="status" name="status"><option value="PENDING">Pending</option><option value="IN_PROGRESS">In Progress</option><option value="COMPLETED">Completed</option></select></div><br>
+            <div><label for="priority">Priority:</label><select id="priority" name="priority"><option value="LOW">Low</option><option value="MEDIUM">Medium</option><option value="HIGH">High</option></select></div><br>
+            <button type="submit">Add Task</button>
+            <button type="button" onclick="closeAddTaskModal()">Cancel</button>
+        </form>
+    </div>
+</div>
+
+<div id="editModal" class="modal">
+    <div class="modal-content card">
+        <h2>Edit Task</h2>
+        <form id="editForm">
+            <input type="hidden" id="editTaskId">
+            <div><label for="editTitle">Title:</label><input type="text" id="editTitle" name="title" required></div><br>
+            <div><label for="editDescription">Description:</label><textarea id="editDescription" name="description" rows="4" required></textarea></div><br>
+            <div><label for="editStatus">Status:</label><select id="editStatus" name="status"><option value="PENDING">Pending</option><option value="IN_PROGRESS">In Progress</option><option value="COMPLETED">Completed</option></select></div><br>
+            <div><label for="editPriority">Priority:</label><select id="editPriority" name="priority"><option value="LOW">Low</option><option value="MEDIUM">Medium</option><option value="HIGH">High</option></select></div><br>
+            <button type="submit">Save Changes</button>
+            <button type="button" onclick="closeEditModal()">Cancel</button>
+        </form>
+    </div>
+</div>
+
+<button id="openAddTaskModalBtn" onclick="openAddTaskModal()">+</button>
+
+<script src="js/script.js"></script>
+</body>
+</html>
