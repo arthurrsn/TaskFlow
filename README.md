@@ -71,7 +71,7 @@ Follow the steps below to configure and run the **TaskFlow API** locally:
     * Create a user and password for the database (or utilize `root` with your password, para ambiente de desenvolvimento).
     * **Update the `src/main/resources/application.properties` file** with your database credentials:
         ```properties
-        spring.datasource.url=jdbc:mysql://localhost:3306/taskflow_db?useSSL=false&serverTimezone=UTC
+        spring.datasource.url=jdbc:mysql://localhost:3306/taskflow?useSSL=false&serverTimezone=UTC
         spring.datasource.username=seu_usuario_mysql
         spring.datasource.password=sua_senha_mysql
         spring.datasource.driverClassName=com.mysql.cj.jdbc.Driver
